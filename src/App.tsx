@@ -1,4 +1,3 @@
-import './App.css'
 import BookingCreate from './components/BookingCreate'
 
 function App() {
