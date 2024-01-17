@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../state/store";
 import { Navbar, Schedule, Listing } from "../components";
-import { Screens } from '../enums/Screens.ts'
+import { Screens } from '../enums'
 import { addBooking, deleteBooking, updateBooking } from "../state/booking/bookingsSlice";
 
 function Bookings() {

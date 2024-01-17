@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Screens } from '../enums/Screens'
+import { Screens } from '../enums'
 
 interface Props {
   setScreen: (screen: Screens) => void;

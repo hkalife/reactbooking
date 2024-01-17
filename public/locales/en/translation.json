@@ -1,5 +1,12 @@
 {
+  "schedule_title": "Welcome to our humble aboad! Select the dates for your booking:",
+  "checkin": "Check-in date:",
+  "checkout": "Check-out date:",
   "main_menu": "Open main menu",
   "new_booking": "Schedule new booking",
-  "view_bookings": "View bookings"
+  "view_bookings": "View bookings",
+  "confirm": "Confirm",
+  "cancel": "Cancel",
+  "submit": "Submit",
+  "required_date_error": "Required date"
 }

@@ -10,7 +10,8 @@ module.exports = {
       "primary": "#2D2AA5",
       "secondary": "#45CBA4",
       "background": "#F1F3F6",
-      "white": "#FFFFFF"
+      "white": "#FFFFFF",
+      "danger": "#DC2626"
     },
   },
   plugins: [],
