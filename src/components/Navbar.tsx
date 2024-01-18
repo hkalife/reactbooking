@@ -12,7 +12,7 @@ const Navbar: React.FC<Props> = (props) => {
   const { t } = useTranslation();
 
   return (
-    <nav className="shadow-md w-full sticky top-0 left-0">
+    <nav className="shadow-md w-full sticky top-0 left-0" data-testid="navbar__component">
       <div className="md:flex items-center justify-between bg-white py-4 md:px-10 px-7">
         <div className="font-bold text-2x1 cursor-pointer flex items-center">
           <a className="-m-1.5 p-1.5 flex" onClick={() => setScreen(0)}>

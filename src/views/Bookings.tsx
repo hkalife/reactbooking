@@ -22,7 +22,7 @@ function Bookings() {
     <div>
       <Navbar setScreen={setCurrentScreen} />
 
-      <div id="dynamic__component" data-testid="dynamic__component">{ defineScreen(currentScreen) }</div>
+      <div data-testid="dynamic__component">{ defineScreen(currentScreen) }</div>
     </div>
   );
 }

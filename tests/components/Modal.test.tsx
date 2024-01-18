@@ -1,12 +1,8 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import { configureStore } from '@reduxjs/toolkit';
 import { Modal } from '../../src/components';
 import { describe, it, expect } from 'vitest';
 import { ModalTypes } from '../../src/enums';
-
-const mockStore = configureStore({ reducer: { bookings: () => [] } });
 
 const modalConfig = {
   type: ModalTypes.WARNING,
@@ -17,16 +13,14 @@ const modalConfig = {
 
 describe('Modal Component', () => {
   render(
-    <Provider store={mockStore}>
-      <Modal
-        type={modalConfig.type}
-        icon={modalConfig.icon}
-        title={modalConfig.title}
-        description={modalConfig.description}
-        onClickConfirm={() => {}}
-        openModal={true}
-      />
-    </Provider>
+    <Modal
+      type={modalConfig.type}
+      icon={modalConfig.icon}
+      title={modalConfig.title}
+      description={modalConfig.description}
+      onClickConfirm={() => {}}
+      openModal={true}
+    />
   );
 
   it('should be visible', () => {
@@ -34,8 +28,10 @@ describe('Modal Component', () => {
   });
 
   it('should render title and description', () => {
-    expect(screen.getByText(modalConfig.title)).toBeTruthy();
-    expect(screen.getByText(modalConfig.description)).toBeTruthy();
+    expect(
+      screen.getByText(modalConfig.title)
+      && screen.getByText(modalConfig.description)
+    ).toBeTruthy();
   });
 
   it('should render its type', () => {
