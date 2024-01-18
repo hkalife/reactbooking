@@ -12,8 +12,8 @@ const Modal: React.FC<ModalProps> = (props) => {
   const cancelButtonRef = useRef(null)
 
   return (
-    <Transition.Root show={openModal} as={Fragment}>
-      <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={setOpenModal}>
+    <Transition.Root show={openModal} as={Fragment} data-testid="modal__component">
+      <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={() => setOpenModal}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -42,8 +42,8 @@ const Modal: React.FC<ModalProps> = (props) => {
                   <div className="sm:flex sm:items-start">
                     <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
                       { icon === ModalTypes.WARNING
-                        ? <ExclamationTriangleIcon className="h-6 w-6 text-danger" aria-hidden="true" />
-                        : <CheckCircleIcon className="h-6 w-6 text-success" aria-hidden="true"/>
+                        ? <ExclamationTriangleIcon data-testid="icon__modal--warning" className="h-6 w-6 text-danger" aria-hidden="true" />
+                        : <CheckCircleIcon data-testid="icon__modal--circle" className="h-6 w-6 text-success" aria-hidden="true"/>
                       }
                     </div>
                     <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">

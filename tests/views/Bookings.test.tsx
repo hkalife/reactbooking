@@ -5,7 +5,6 @@ import { configureStore } from '@reduxjs/toolkit';
 import Bookings from '../../src/views/Bookings';
 import { describe, it, expect } from 'vitest';
 
-
 const mockStore = configureStore({ reducer: { bookings: () => [] } });
 
 describe('Bookings Component', () => {
@@ -20,7 +19,7 @@ describe('Bookings Component', () => {
     expect(screen.getByTestId('schedule__screen')).toBeTruthy();
   });
 
-  it('changes screen correctly', () => {
+  it('should change screens correctly', () => {
     const buttonElement = screen.getByTestId('button__navbar--listing');
     fireEvent.click(buttonElement);
 
