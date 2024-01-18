@@ -118,7 +118,7 @@ function Listing() {
   }
 
   return (
-    <>
+    <div data-testid="listing__screen">
       <div className="flex justify-center">
         <h1 className="m-6 text-2xl font-semibold">{t('bookings_title')}</h1>
       </div>
@@ -251,7 +251,7 @@ function Listing() {
         position="bottom-center"
         reverseOrder={false}
       />
-    </>
+    </div>
   )
 }
 

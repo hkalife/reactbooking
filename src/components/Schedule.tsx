@@ -107,7 +107,7 @@ function Schedule() {
   }
 
   return (
-    <>
+    <div data-testid="schedule__screen">
       <h1 className="m-6 text-2xl font-semibold">{ t('schedule_title') }</h1>
       <div className="mx-3 flex flex-wrap">
         <div className="w-full px-3 sm:w-1/2">
@@ -175,7 +175,7 @@ function Schedule() {
         position="bottom-center"
         reverseOrder={false}
       />
-    </>
+    </div>
   )
 }
 

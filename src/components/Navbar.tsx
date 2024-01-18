@@ -46,6 +46,7 @@ const Navbar: React.FC<Props> = (props) => {
           <li className="md:ml-8 text-xl md:my-0 my-7">
             <button
               className="text-gray-800 hover:text-primary"
+              data-testid="button__navbar--booking"
               onClick={
                 () => {
                   setScreen(0)
@@ -59,6 +60,7 @@ const Navbar: React.FC<Props> = (props) => {
           <li className="md:ml-8 text-xl">
             <button
               className="text-gray-800 hover:text-primary"
+              data-testid="button__navbar--listing"
               onClick={
                 () => {
                   setScreen(1)
