@@ -1,10 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-interface BookingsState {
-  id: string;
-  beginDate: string;
-  endDate: string;
-}
+import { BookingsState } from "../../interfaces";
 
 const initialState: BookingsState[] = [];
 
@@ -13,6 +8,7 @@ const bookingsSlice = createSlice({
   initialState,
   reducers: {
     addBooking: (state, action: PayloadAction<BookingsState>) => {
+      console.log('addBooking')
       state.push(action.payload);
     },
     updateBooking: (state, action: PayloadAction<BookingsState>) => {

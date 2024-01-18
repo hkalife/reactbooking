@@ -11,7 +11,8 @@ module.exports = {
       "secondary": "#45CBA4",
       "background": "#F1F3F6",
       "white": "#FFFFFF",
-      "danger": "#DC2626"
+      "danger": "#DC2626",
+      "success": "#4D7C0F"
     },
   },
   plugins: [],

@@ -1,26 +1,19 @@
-import { Fragment, useRef, useState } from 'react'
+import { Fragment, useRef } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { ExclamationTriangleIcon, CheckCircleIcon } from '@heroicons/react/24/outline'
 import { ModalTypes } from '../enums'
 import { useTranslation } from 'react-i18next';
+import { ModalProps } from '../interfaces';
 
-interface Props {
-  type: ModalTypes;
-  title: string;
-  description: string;
-  onClickConfirm: () => void;
-}
-
-const Modal: React.FC<Props> = (props) => {
-  const { type, title, description, onClickConfirm } = props;
+const Modal: React.FC<ModalProps> = (props) => {
+  const { type, title, description, onClickConfirm, openModal, setOpenModal } = props;
   const { t } = useTranslation();
-  const [open, setOpen] = useState(true)
 
   const cancelButtonRef = useRef(null)
 
   return (
-    <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={setOpen}>
+    <Transition.Root show={openModal} as={Fragment}>
+      <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={setOpenModal}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -49,8 +42,8 @@ const Modal: React.FC<Props> = (props) => {
                   <div className="sm:flex sm:items-start">
                     <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
                       { type === ModalTypes.WARNING
-                        ? <ExclamationTriangleIcon className="h-6 w-6 text-red-600" aria-hidden="true" />
-                        : <CheckCircleIcon className="h-6 w-6 text-red-600" aria-hidden="true"/>
+                        ? <ExclamationTriangleIcon className="h-6 w-6 text-danger" aria-hidden="true" />
+                        : <CheckCircleIcon className="h-6 w-6 text-success" aria-hidden="true"/>
                       }
                     </div>
                     <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
@@ -66,20 +59,20 @@ const Modal: React.FC<Props> = (props) => {
                   </div>
                 </div>
                 <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                  <button
+                  {type === ModalTypes.CONFIRM && (<button
                     type="button"
-                    className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
+                    className="inline-flex w-full justify-center rounded-md bg-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
                     onClick={() => {
-                      setOpen(false);
-                      onClickConfirm();
+                      setOpenModal && setOpenModal(false);
+                      onClickConfirm && onClickConfirm();
                     }}
                   >
                     { t("confirm") }
-                  </button>
+                  </button>)}
                   <button
                     type="button"
                     className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
-                    onClick={() => setOpen(false)}
+                    onClick={() => setOpenModal && setOpenModal(false)}
                     ref={cancelButtonRef}
                   >
                     { t("cancel") }

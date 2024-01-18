@@ -1,5 +1,5 @@
 {
-  "schedule_title": "Welcome to our humble aboad! Select the dates for your booking:",
+  "schedule_title": "Welcome to our humble abode! Select the dates for your booking:",
   "checkin": "Check-in date:",
   "checkout": "Check-out date:",
   "main_menu": "Open main menu",
@@ -8,5 +8,9 @@
   "confirm": "Confirm",
   "cancel": "Cancel",
   "submit": "Submit",
-  "required_date_error": "Required date"
+  "required_date_error": "Required date",
+  "available_modal_title": "This date is available!",
+  "available_modal_subtitle": "Would you like to confirm your reservation?",
+  "error_modal_title": "Not available",
+  "error_modal_subtitle": "Sorry, this date is not available. Please select a different one."
 }
