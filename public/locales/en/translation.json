@@ -9,6 +9,8 @@
   "cancel": "Cancel",
   "submit": "Submit",
   "required_date_error": "Required date",
+  "checkin_past": "Check-in date cannot be in the past",
+  "checkin_before_checkout": "Check-out should be after check-in",
   "available_modal_title": "This date is available!",
   "available_modal_subtitle": "Would you like to confirm your reservation?",
   "error_modal_title": "Not available",

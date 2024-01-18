@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { isWithinInterval, parseISO } from 'date-fns'
+import { isWithinInterval, parseISO, isPast, isBefore, isToday } from 'date-fns'
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../state/store';
 import { ModalTypes } from '../enums';
@@ -17,6 +17,8 @@ function Schedule() {
   const bookings = useSelector((state: RootState) => state.bookings);
   const [beginDate, setBeginDate] = useState<string>('');
   const [endDate, setEndDate] = useState<string>('');
+  const [beginDateError, setBeginDateError] = useState<string>('');
+  const [endDateError, setEndDateError] = useState<string>('');
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [modalConfig, setModalConfig] = useState<ModalProps>({
     type: ModalTypes.CONFIRM,
@@ -33,6 +35,13 @@ function Schedule() {
   };
 
   const validateFieldsAndCheckDates = () => {
+    const errorsFoundInDates = verifyIfDatesAreValid();
+    console.log('errorsFoundInDates', errorsFoundInDates)
+
+    if (errorsFoundInDates) {
+      return
+    }
+
     console.log('parseIso', parseISO(beginDate))
     setOpenModal(true)
     const newInterval = {
@@ -67,6 +76,20 @@ function Schedule() {
     })
   }
 
+  const verifyIfDatesAreValid = () => {
+    setBeginDateError('');
+    setEndDateError('');
+
+    let hasError = false;
+
+    hasError = !isToday(parseISO(beginDate)) && isPast(parseISO(beginDate)) && (setBeginDateError(t('checkin_past')), true) || hasError;
+    hasError = (beginDate === '') && (setBeginDateError(t('required_date_error')), true) || hasError;
+    hasError = (endDate === '') && (setEndDateError(t('required_date_error')), true) || hasError;
+    hasError = isBefore(parseISO(endDate), parseISO(beginDate)) && (setEndDateError(t('checkin_before_checkout')), true) || hasError;
+
+    return hasError;
+  }
+
   const onClickConfirm = () => {
     dispatch(addBooking({
       id: uuidv4(),
@@ -75,6 +98,9 @@ function Schedule() {
     }))
 
     toast.success(t('success_create'))
+
+    setBeginDate('')
+    setEndDate('')
   }
 
   return (
@@ -97,7 +123,7 @@ function Schedule() {
               className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
             />
             <div className="flex justify-end">
-              <p className="mt-2 text-danger">{ t('required_date_error') }</p>
+              <p className="mt-2 text-danger">{ beginDateError }</p>
             </div>
           </div>
         </div>
@@ -117,7 +143,7 @@ function Schedule() {
               className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
             />
             <div className="flex justify-end">
-              <p className="mt-2 text-danger">{ t('required_date_error') }</p>
+              <p className="mt-2 text-danger">{ endDateError }</p>
             </div>
           </div>
         </div>
