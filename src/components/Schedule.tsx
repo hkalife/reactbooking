@@ -83,10 +83,12 @@ function Schedule() {
 
     let hasError = false;
 
+    console.log('')
+
     hasError = !isToday(parseISO(beginDate)) && isPast(parseISO(beginDate)) && (setBeginDateError(t('checkin_past')), true) || hasError;
     hasError = (beginDate === '') && (setBeginDateError(t('required_date_error')), true) || hasError;
     hasError = (endDate === '') && (setEndDateError(t('required_date_error')), true) || hasError;
-    hasError = isBefore(parseISO(endDate), parseISO(beginDate)) && (setEndDateError(t('checkin_before_checkout')), true) || hasError;
+    hasError = (beginDate === endDate || isBefore(parseISO(endDate), parseISO(beginDate))) && (setEndDateError(t('checkin_before_checkout')), true) || hasError;
 
     return hasError;
   }
