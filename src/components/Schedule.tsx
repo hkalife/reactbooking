@@ -7,6 +7,7 @@ import { ModalTypes } from '../enums';
 import { ModalProps } from '../interfaces';
 import { addBooking } from '../state/booking/bookingsSlice';
 import { v4 as uuidv4 } from 'uuid';
+import toast, { Toaster } from "react-hot-toast";
 import Modal from './Modal';
 
 
@@ -72,6 +73,8 @@ function Schedule() {
       beginDate,
       endDate,
     }))
+
+    toast.success(t('success_create'))
   }
 
   return (
@@ -136,6 +139,11 @@ function Schedule() {
         onClickConfirm={onClickConfirm}
         openModal={openModal}
         setOpenModal={setOpenModal}
+      />
+
+      <Toaster
+        position="bottom-center"
+        reverseOrder={false}
       />
     </>
   )
