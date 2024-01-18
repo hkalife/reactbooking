@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { isWithinInterval } from 'date-fns'
+import { isWithinInterval, parseISO } from 'date-fns'
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../state/store';
 import { ModalTypes } from '../enums';
@@ -32,18 +32,19 @@ function Schedule() {
   };
 
   const validateFieldsAndCheckDates = () => {
+    console.log('parseIso', parseISO(beginDate))
     setOpenModal(true)
     const newInterval = {
-      beginDate: new Date(beginDate.split('-').reverse().join('-')),
-      endDate: new Date(endDate.split('-').reverse().join('-')),
+      beginDate: parseISO(beginDate),
+      endDate: parseISO(endDate),
     };
   
     for (const booking of bookings) {
       const existingInterval = {
-        start: new Date(booking.beginDate.split('-').reverse().join('-')),
-        end: new Date(booking.endDate.split('-').reverse().join('-')),
+        start: parseISO(booking.beginDate),
+        end: parseISO(booking.endDate),
       };
-  
+
       if (isWithinInterval(newInterval.beginDate, existingInterval)
         || isWithinInterval(newInterval.endDate, existingInterval)
       ) {
