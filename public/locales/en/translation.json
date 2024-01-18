@@ -15,5 +15,12 @@
   "available_modal_subtitle": "Would you like to confirm your reservation?",
   "error_modal_title": "Not available",
   "error_modal_subtitle": "Sorry, this date is not available. Please select a different one.",
-  "success_create": "Booking successfully created!"
+  "success_create": "Booking successfully created!",
+  "success_remove": "Booking successfully removed!",
+  "bookings_title": "Current Bookings",
+  "no_bookings": "No bookings yet.",
+  "edit": "Edit",
+  "delete": "Delete",
+  "sure": "Are you sure?",
+  "not_reversible": "This action is not reversible."
 }

@@ -22,6 +22,7 @@ function Schedule() {
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [modalConfig, setModalConfig] = useState<ModalProps>({
     type: ModalTypes.CONFIRM,
+    icon: ModalTypes.WARNING,
     title: '',
     description: '',
   });
@@ -36,13 +37,11 @@ function Schedule() {
 
   const validateFieldsAndCheckDates = () => {
     const errorsFoundInDates = verifyIfDatesAreValid();
-    console.log('errorsFoundInDates', errorsFoundInDates)
 
     if (errorsFoundInDates) {
       return
     }
 
-    console.log('parseIso', parseISO(beginDate))
     setOpenModal(true)
     const newInterval = {
       beginDate: parseISO(beginDate),
@@ -60,6 +59,7 @@ function Schedule() {
       ) {
         setModalConfig({
           type: ModalTypes.WARNING,
+          icon: ModalTypes.WARNING,
           title: t('error_modal_title'),
           description: t('error_modal_subtitle'),
           onClickConfirm,
@@ -70,6 +70,7 @@ function Schedule() {
 
     setModalConfig({
       type: ModalTypes.CONFIRM,
+      icon: ModalTypes.CONFIRM,
       title: t('available_modal_title'),
       description: t('available_modal_subtitle'),
       onClickConfirm,
@@ -160,6 +161,7 @@ function Schedule() {
 
       <Modal
         type={modalConfig.type}
+        icon={modalConfig.icon}
         title={modalConfig.title}
         description={modalConfig.description}
         onClickConfirm={onClickConfirm}

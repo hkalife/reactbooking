@@ -4,6 +4,7 @@ import { ModalTypes } from "../enums";
 
 interface ModalProps {
   type: ModalTypes;
+  icon: ModalTypes;
   title: string;
   description: string;
   onClickConfirm?: () => void;

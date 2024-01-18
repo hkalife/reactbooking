@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { ModalProps } from '../interfaces';
 
 const Modal: React.FC<ModalProps> = (props) => {
-  const { type, title, description, onClickConfirm, openModal, setOpenModal } = props;
+  const { type, title, description, onClickConfirm, openModal, setOpenModal, icon } = props;
   const { t } = useTranslation();
 
   const cancelButtonRef = useRef(null)
@@ -41,7 +41,7 @@ const Modal: React.FC<ModalProps> = (props) => {
                 <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                   <div className="sm:flex sm:items-start">
                     <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-                      { type === ModalTypes.WARNING
+                      { icon === ModalTypes.WARNING
                         ? <ExclamationTriangleIcon className="h-6 w-6 text-danger" aria-hidden="true" />
                         : <CheckCircleIcon className="h-6 w-6 text-success" aria-hidden="true"/>
                       }
