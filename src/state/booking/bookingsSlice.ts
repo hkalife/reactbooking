@@ -8,7 +8,6 @@ const bookingsSlice = createSlice({
   initialState,
   reducers: {
     addBooking: (state, action: PayloadAction<BookingsState>) => {
-      console.log('addBooking')
       state.push(action.payload);
     },
     updateBooking: (state, action: PayloadAction<BookingsState>) => {

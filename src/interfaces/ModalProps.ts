@@ -6,7 +6,6 @@ interface ModalProps {
   type: ModalTypes;
   title: string;
   description: string;
-  // onClickConfirm?: { payload: BookingsState; type: string; };
   onClickConfirm?: () => void;
   openModal?: boolean;
   setOpenModal?: Dispatch<SetStateAction<boolean>>;
