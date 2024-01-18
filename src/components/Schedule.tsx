@@ -125,7 +125,7 @@ function Schedule() {
 
       <div className="flex justify-center mt-2">
         <button
-          className="w-1/2 rounded-md bg-primary py-3 px-8 text-center text-base font-semibold text-white outline-none"
+          className="w-1/2 rounded-md bg-primary py-3 px-8 text-center text-base font-semibold text-white outline-none hover:opacity-90"
           onClick={() => validateFieldsAndCheckDates()}
         >
           { t('submit') }

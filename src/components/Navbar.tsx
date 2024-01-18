@@ -44,10 +44,10 @@ const Navbar: React.FC<Props> = (props) => {
           }
         >
           <li className="md:ml-8 text-xl md:my-0 my-7">
-            <button className="text-gray-800" onClick={() => setScreen(0)}>{ t("new_booking") }</button>
+            <button className="text-gray-800 hover:text-primary" onClick={() => setScreen(0)}>{ t("new_booking") }</button>
           </li>
           <li className="md:ml-8 text-xl">
-            <button className="text-gray-800" onClick={() => setScreen(1)}>{ t("view_bookings") }</button>
+            <button className="text-gray-800 hover:text-primary" onClick={() => setScreen(1)}>{ t("view_bookings") }</button>
           </li>
         </ul>
       </div>
