@@ -124,7 +124,7 @@ function Schedule() {
               className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
             />
             <div className="flex justify-end">
-              <p className="mt-2 text-danger">{ beginDateError }</p>
+              <p data-testid="error__beginDate" className="mt-2 text-danger">{ beginDateError }</p>
             </div>
           </div>
         </div>
@@ -144,7 +144,7 @@ function Schedule() {
               className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
             />
             <div className="flex justify-end">
-              <p className="mt-2 text-danger">{ endDateError }</p>
+              <p data-testid="error__endDate" className="mt-2 text-danger">{ endDateError }</p>
             </div>
           </div>
         </div>
