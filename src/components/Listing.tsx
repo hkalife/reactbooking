@@ -137,7 +137,7 @@ function Listing() {
       </div>
 
       {bookings.map((booking, index) => (
-        <div key={booking.id}>
+        <div key={booking.id} data-testid={`listing__result--${index}`}>
           <div className="flex">
             <div className={`w-full bg-white shadow mx-6 p-6 ${index > 0 && "border-t border-gray-200"}`}>
               <div className="flex items-center justify-between">
