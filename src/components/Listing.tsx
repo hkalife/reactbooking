@@ -8,8 +8,7 @@ import { ChangeEvent, useState } from "react";
 import { ModalTypes } from "../enums";
 import toast, { Toaster } from "react-hot-toast";
 import { deleteBooking, updateBooking } from "../state/booking/bookingsSlice";
-import { getDay, isBefore, isPast, isToday, isWithinInterval, parseISO } from "date-fns";
-import { current } from "@reduxjs/toolkit";
+import { isBefore, isPast, isToday, isWithinInterval, parseISO } from "date-fns";
 
 interface DateFields {
   visible: boolean;
@@ -106,8 +105,6 @@ function Listing() {
     setEndDateError('');
 
     let hasError = false;
-
-    console.log('currentBooking.beginDate === currentBooking.endDate', currentBooking.beginDate === currentBooking.endDate)
 
     hasError = !isToday(parseISO(currentBooking.beginDate)) && isPast(parseISO(currentBooking.beginDate)) && (setBeginDateError(t('checkin_past')), true) || hasError;
     hasError = (currentBooking.beginDate === '') && (setBeginDateError(t('required_date_error')), true) || hasError;

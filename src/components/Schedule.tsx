@@ -83,8 +83,6 @@ function Schedule() {
 
     let hasError = false;
 
-    console.log('')
-
     hasError = !isToday(parseISO(beginDate)) && isPast(parseISO(beginDate)) && (setBeginDateError(t('checkin_past')), true) || hasError;
     hasError = (beginDate === '') && (setBeginDateError(t('required_date_error')), true) || hasError;
     hasError = (endDate === '') && (setEndDateError(t('required_date_error')), true) || hasError;
