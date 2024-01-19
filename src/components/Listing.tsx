@@ -144,6 +144,7 @@ function Listing() {
                 <p className="text-sm font-medium text-gray-500">Check-in: {booking.beginDate}</p>
                 <a
                   className="font-medium text-primary hover:opacity-50 cursor-pointer"
+                  data-testid={`edit__result--${index}`}
                   onClick={() => {
                     setShowDateFields({
                       id: booking.id,
@@ -158,6 +159,7 @@ function Listing() {
               <div className="mt-2 flex items-center justify-between">
                 <p className="text-sm font-medium text-gray-500">Check-out: {booking.endDate}</p>
                 <a
+                  data-testid={`delete__result--${index}`}
                   className="font-medium text-danger hover:opacity-50 cursor-pointer"
                   onClick={() => {
                     setCurrentBooking(booking)
@@ -186,11 +188,12 @@ function Listing() {
                         <input
                           type="date"
                           name="date"
+                          data-testid={`edit__checkin--${index}`}
                           value={currentBooking.beginDate}
                           onChange={handleBeginDataChange}
                           className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                         />
-                        <div className="flex justify-end">
+                        <div data-testid={`edit__errorbegin--${index}`} className="flex justify-end">
                           <p className="mt-2 text-danger">{beginDateError}</p>
                         </div>
                       </div>
@@ -205,18 +208,20 @@ function Listing() {
                         <input
                           type="date"
                           name="date"
+                          data-testid={`edit__checkout--${index}`}
                           value={currentBooking.endDate}
                           onChange={handleEndDataChange}
                           className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                         />
                         <div className="flex justify-end">
-                          <p className="mt-2 text-danger">{endDateError}</p>
+                          <p data-testid={`edit__errorend--${index}`} className="mt-2 text-danger">{endDateError}</p>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div className="flex justify-center mt-2">
                     <button
+                      data-testid={`confirm__edit--${index}`}
                       className="w-1/2 rounded-md bg-primary py-3 px-8 text-center text-base font-semibold text-white outline-none hover:opacity-90"
                       onClick={() => {
                         validateFieldsAndCheckDates()
