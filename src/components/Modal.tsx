@@ -1,19 +1,39 @@
-import { Fragment, useRef } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
-import { ExclamationTriangleIcon, CheckCircleIcon } from '@heroicons/react/24/outline'
-import { ModalTypes } from '../enums'
-import { useTranslation } from 'react-i18next';
-import { ModalProps } from '../interfaces';
+import { Fragment, useRef } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+import {
+  ExclamationTriangleIcon,
+  CheckCircleIcon,
+} from "@heroicons/react/24/outline";
+import { ModalTypes } from "../enums";
+import { useTranslation } from "react-i18next";
+import { ModalProps } from "../interfaces";
 
 const Modal: React.FC<ModalProps> = (props) => {
-  const { type, title, description, onClickConfirm, openModal, setOpenModal, icon } = props;
+  const {
+    type,
+    title,
+    description,
+    onClickConfirm,
+    openModal,
+    setOpenModal,
+    icon,
+  } = props;
   const { t } = useTranslation();
 
-  const cancelButtonRef = useRef(null)
+  const cancelButtonRef = useRef(null);
 
   return (
-    <Transition.Root show={openModal} as={Fragment} data-testid="modal__component">
-      <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={() => setOpenModal}>
+    <Transition.Root
+      show={openModal}
+      as={Fragment}
+      data-testid="modal__component"
+    >
+      <Dialog
+        as="div"
+        className="relative z-10"
+        initialFocus={cancelButtonRef}
+        onClose={() => setOpenModal}
+      >
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -41,35 +61,47 @@ const Modal: React.FC<ModalProps> = (props) => {
                 <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                   <div className="sm:flex sm:items-start">
                     <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-                      { icon === ModalTypes.WARNING
-                        ? <ExclamationTriangleIcon data-testid="icon__modal--warning" className="h-6 w-6 text-danger" aria-hidden="true" />
-                        : <CheckCircleIcon data-testid="icon__modal--circle" className="h-6 w-6 text-success" aria-hidden="true"/>
-                      }
+                      {icon === ModalTypes.WARNING ? (
+                        <ExclamationTriangleIcon
+                          data-testid="icon__modal--warning"
+                          className="h-6 w-6 text-danger"
+                          aria-hidden="true"
+                        />
+                      ) : (
+                        <CheckCircleIcon
+                          data-testid="icon__modal--circle"
+                          className="h-6 w-6 text-success"
+                          aria-hidden="true"
+                        />
+                      )}
                     </div>
                     <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-                      <Dialog.Title as="h3" className="text-base font-semibold leading-6 text-gray-900">
-                        { title }
+                      <Dialog.Title
+                        as="h3"
+                        className="text-base font-semibold leading-6 text-gray-900"
+                      >
+                        {title}
                       </Dialog.Title>
                       <div className="mt-2">
-                        <p className="text-sm text-gray-500">
-                          { description }
-                        </p>
+                        <p className="text-sm text-gray-500">{description}</p>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                  {type === ModalTypes.CONFIRM && (<button
-                    type="button"
-                    data-testid="modal__button--confirm"
-                    className="inline-flex w-full justify-center rounded-md bg-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:opacity-90 sm:ml-3 sm:w-auto"
-                    onClick={() => {
-                      setOpenModal && setOpenModal(false);
-                      onClickConfirm && onClickConfirm();
-                    }}
-                  >
-                    { t("confirm") }
-                  </button>)}
+                  {type === ModalTypes.CONFIRM && (
+                    <button
+                      type="button"
+                      data-testid="modal__button--confirm"
+                      className="inline-flex w-full justify-center rounded-md bg-primary px-3 py-2 text-sm font-semibold text-white shadow-sm hover:opacity-90 sm:ml-3 sm:w-auto"
+                      onClick={() => {
+                        setOpenModal && setOpenModal(false);
+                        onClickConfirm && onClickConfirm();
+                      }}
+                    >
+                      {t("confirm")}
+                    </button>
+                  )}
                   <button
                     type="button"
                     data-testid="modal__button--cancel"
@@ -77,7 +109,7 @@ const Modal: React.FC<ModalProps> = (props) => {
                     onClick={() => setOpenModal && setOpenModal(false)}
                     ref={cancelButtonRef}
                   >
-                    { t("cancel") }
+                    {t("cancel")}
                   </button>
                 </div>
               </Dialog.Panel>
@@ -86,7 +118,7 @@ const Modal: React.FC<ModalProps> = (props) => {
         </div>
       </Dialog>
     </Transition.Root>
-  )
-}
+  );
+};
 
 export default Modal;

@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Screens } from '../enums'
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { Screens } from "../enums";
 
 interface Props {
   setScreen: (screen: Screens) => void;
@@ -12,7 +12,10 @@ const Navbar: React.FC<Props> = (props) => {
   const { t } = useTranslation();
 
   return (
-    <nav className="shadow-md w-full sticky top-0 left-0" data-testid="navbar__component">
+    <nav
+      className="shadow-md w-full sticky top-0 left-0"
+      data-testid="navbar__component"
+    >
       <div className="md:flex items-center justify-between bg-white py-4 md:px-10 px-7">
         <div className="font-bold text-2x1 cursor-pointer flex items-center">
           <a className="-m-1.5 p-1.5 flex" onClick={() => setScreen(0)}>
@@ -20,9 +23,15 @@ const Navbar: React.FC<Props> = (props) => {
             <h1 className="font-semibold text-white bg-secondary">Booking</h1>
           </a>
         </div>
-        <div className="text-3x1 absolute right-8 top-5 cursor-pointer md:hidden" onClick={() => setOpen(!open)}>
-          <button type="button" className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
-            <span className="sr-only">{ t("main_menu") }</span>
+        <div
+          className="text-3x1 absolute right-8 top-5 cursor-pointer md:hidden"
+          onClick={() => setOpen(!open)}
+        >
+          <button
+            type="button"
+            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+          >
+            <span className="sr-only">{t("main_menu")}</span>
             <svg
               className="h-6 w-6 text-primary"
               fill="none"
@@ -39,42 +48,39 @@ const Navbar: React.FC<Props> = (props) => {
             </svg>
           </button>
         </div>
-        <ul className={
-          `md:flex md:items-center md:pb-0 pb-6 absolute md:static bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-7 ${open ? 'top-19' : 'top-[-400px]'}`
-          }
+        <ul
+          className={`md:flex md:items-center md:pb-0 pb-6 absolute md:static bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-7 ${
+            open ? "top-19" : "top-[-400px]"
+          }`}
         >
           <li className="md:ml-8 text-xl md:my-0 my-7">
             <button
               className="text-gray-800 hover:text-primary"
               data-testid="button__navbar--booking"
-              onClick={
-                () => {
-                  setScreen(0)
-                  setOpen(!open)
-                }
-              }
+              onClick={() => {
+                setScreen(0);
+                setOpen(!open);
+              }}
             >
-              { t("new_booking") }
+              {t("new_booking")}
             </button>
           </li>
           <li className="md:ml-8 text-xl">
             <button
               className="text-gray-800 hover:text-primary"
               data-testid="button__navbar--listing"
-              onClick={
-                () => {
-                  setScreen(1)
-                  setOpen(!open)
-                }
-              }
+              onClick={() => {
+                setScreen(1);
+                setOpen(!open);
+              }}
             >
-              { t("view_bookings") }
+              {t("view_bookings")}
             </button>
           </li>
         </ul>
       </div>
     </nav>
   );
-}
+};
 
 export default Navbar;

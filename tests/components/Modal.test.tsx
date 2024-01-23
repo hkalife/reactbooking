@@ -1,17 +1,17 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { Modal } from '../../src/components';
-import { describe, it, expect } from 'vitest';
-import { ModalTypes } from '../../src/enums';
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import { Modal } from "../../src/components";
+import { describe, it, expect } from "vitest";
+import { ModalTypes } from "../../src/enums";
 
 const modalConfig = {
   type: ModalTypes.WARNING,
   icon: ModalTypes.WARNING,
-  title: 'Title',
-  description: 'Description',
-}
+  title: "Title",
+  description: "Description",
+};
 
-describe('Modal Component', () => {
+describe("Modal Component", () => {
   render(
     <Modal
       type={modalConfig.type}
@@ -23,18 +23,18 @@ describe('Modal Component', () => {
     />
   );
 
-  it('should be visible', () => {
-    expect(screen.getByTestId('modal__component')).toBeTruthy();
+  it("should be visible", () => {
+    expect(screen.getByTestId("modal__component")).toBeTruthy();
   });
 
-  it('should render title and description', () => {
+  it("should render title and description", () => {
     expect(
-      screen.getByText(modalConfig.title)
-      && screen.getByText(modalConfig.description)
+      screen.getByText(modalConfig.title) &&
+        screen.getByText(modalConfig.description)
     ).toBeTruthy();
   });
 
-  it('should render its type', () => {
-    expect(screen.getByTestId('icon__modal--warning')).toBeTruthy();
+  it("should render its type", () => {
+    expect(screen.getByTestId("icon__modal--warning")).toBeTruthy();
   });
 });

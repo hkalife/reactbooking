@@ -1,5 +1,5 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Bookings from './views/Bookings'
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Bookings from "./views/Bookings";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
         </Routes>
       </Router>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
